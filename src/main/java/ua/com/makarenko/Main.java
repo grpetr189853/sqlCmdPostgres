@@ -2,6 +2,8 @@ package ua.com.makarenko;
 
 import ua.com.makarenko.model.JDBCManagerDAO;
 import ua.com.makarenko.model.ManagerDAO;
+import ua.com.makarenko.view.Console;
+import ua.com.makarenko.view.Message;
 
 import java.io.*;
 import java.util.Properties;
@@ -10,9 +12,10 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        Message message = new Console();
+
         try {
-            String line = reader.readLine();
+            String line = message.read();
             String[] data = line.split("\\|");
 
             String database = data[0];
