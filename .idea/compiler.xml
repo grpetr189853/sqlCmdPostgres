@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="sqlCommandjava" target="1.5" />
+      <module name="sqlCommandjava" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
