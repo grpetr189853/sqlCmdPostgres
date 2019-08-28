@@ -1,13 +1,17 @@
 package ua.com.makarenko.model;
 
-import java.sql.Connection;
+import java.util.Map;
 import java.util.Set;
 
 public interface ManagerDAO {
 
-    Connection getConnection();
-
     Set<String> listTables();
 
+    void createTable(String tableName, String keyName, Map<String, Object> columns);
 
+    void dropTable(String tableName);
+
+    void clearTable(String tableName);
+
+    void openTable(String tableName);
 }

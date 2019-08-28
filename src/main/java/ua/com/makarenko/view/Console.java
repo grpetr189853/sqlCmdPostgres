@@ -16,12 +16,12 @@ public class Console implements Message {
 
     @Override
     public String read() {
-        String readResult = null;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            readResult = reader.readLine();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            return reader.readLine();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return readResult;
+        return "";
     }
 }
