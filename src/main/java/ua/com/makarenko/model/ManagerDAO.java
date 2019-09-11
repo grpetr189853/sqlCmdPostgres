@@ -7,11 +7,19 @@ public interface ManagerDAO {
 
     Set<String> listTables();
 
-    void createTable(String tableName, String keyName, Map<String, Object> columns);
+    void createTable(String tableName, String keyName, Map<String, String> columns);
 
     void dropTable(String tableName);
 
     void clearTable(String tableName);
 
     void openTable(String tableName);
+
+    void insertData(String tableName, Map<String, Object> row);
+
+    void updateData(String tableName, String keyName, String keyValue, Map<String, Object> column);
+
+    void deleteData(String tableName, String columnName, String columnValue);
+
+    boolean isConnected();
 }

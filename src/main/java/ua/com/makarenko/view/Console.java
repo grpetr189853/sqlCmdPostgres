@@ -15,6 +15,16 @@ public class Console implements Message {
     }
 
     @Override
+    public void writePrint(String message) {
+        System.out.print(message);
+    }
+
+    @Override
+    public void writeEmpty() {
+        System.out.println();
+    }
+
+    @Override
     public String read() {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

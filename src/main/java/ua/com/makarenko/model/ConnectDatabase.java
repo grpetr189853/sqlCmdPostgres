@@ -9,9 +9,6 @@ import java.sql.SQLException;
 public class ConnectDatabase {
     private static Connection connection;
 
-    private ConnectDatabase() {
-    }
-
     public static Connection setupConnection(String database, String login, String password) {
         PropertiesOfConnecting properties = new PropertiesOfConnecting().invoke();
         String driver = properties.getDriver();

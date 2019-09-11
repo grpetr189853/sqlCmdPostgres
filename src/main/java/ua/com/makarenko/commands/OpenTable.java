@@ -4,7 +4,7 @@ import ua.com.makarenko.model.ManagerDAO;
 import ua.com.makarenko.view.DescriptionMessage;
 
 public class OpenTable implements Command {
-    ManagerDAO managerDAO;
+    private ManagerDAO managerDAO;
 
     public OpenTable(ManagerDAO managerDAO) {
         this.managerDAO = managerDAO;

@@ -4,29 +4,22 @@ import ua.com.makarenko.model.ManagerDAO;
 import ua.com.makarenko.view.DescriptionMessage;
 import ua.com.makarenko.view.Message;
 
-import java.util.Set;
-
-public class ListTables implements Command {
+public class IsConnected implements Command {
     private Message message;
     private ManagerDAO managerDAO;
 
-    public ListTables(Message message, ManagerDAO managerDAO) {
+    public IsConnected(Message message, ManagerDAO managerDAO) {
         this.message = message;
         this.managerDAO = managerDAO;
     }
 
     @Override
     public boolean beginCommand(String command) {
-        return command.startsWith("tables");
+        return !managerDAO.isConnected();
     }
 
     @Override
     public void executeCommand(String command) {
-        Set<String> tables = managerDAO.listTables();
-        if (tables.size() != 0) {
-            message.write(tables.toString());
-        } else {
-            message.write(DescriptionMessage.DATABASE_NOT_TABLES.getDescription());
-        }
+        message.write(DescriptionMessage.IS_CONNECTED.getDescription());
     }
 }

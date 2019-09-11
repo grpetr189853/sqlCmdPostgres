@@ -31,7 +31,7 @@ public class CreateTable implements Command {
 
         String tableName = data[1];
         String keyName = data[2];
-        Map<String, Object> columns = new LinkedHashMap<>();
+        Map<String, String> columns = new LinkedHashMap<>();
         for (int i = 3; i < data.length; i += 2) {
             columns.put(data[i], data[i + 1]);
         }

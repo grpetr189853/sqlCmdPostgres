@@ -5,8 +5,8 @@ import ua.com.makarenko.view.DescriptionMessage;
 import ua.com.makarenko.view.Message;
 
 public class DropTable implements Command {
-    Message message;
-    ManagerDAO managerDAO;
+    private Message message;
+    private ManagerDAO managerDAO;
 
     public DropTable(Message message, ManagerDAO managerDAO) {
         this.message = message;

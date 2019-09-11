@@ -6,5 +6,9 @@ public interface Message {
 
     void writeError(String message);
 
+    void writePrint(String message);
+
+    void writeEmpty();
+
     String read();
 }

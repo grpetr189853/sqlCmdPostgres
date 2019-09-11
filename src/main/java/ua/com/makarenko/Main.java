@@ -14,6 +14,5 @@ public class Main {
 
         Controller controller = new Controller(message, databaseManager);
         controller.run();
-
     }
 }

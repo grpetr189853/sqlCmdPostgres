@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrintTable {
+    private static Message message;
+
+    public static void setMessage(Message message) {
+        PrintTable.message = message;
+    }
+
     private static class Column {
 
         private String label;
@@ -61,11 +67,11 @@ public class PrintTable {
     public static void printResultSet(ResultSet resultSet) {
         try {
             if (resultSet == null) {
-                System.err.println("TablePrinter Error: Result set is null!");
+                message.writeError("TablePrinter Error: Result set is null!");
                 return;
             }
             if (resultSet.isClosed()) {
-                System.err.println("TablePrinter Error: Result Set is closed!");
+                message.writeError("TablePrinter Error: Result Set is closed!");
                 return;
             }
 
@@ -101,8 +107,8 @@ public class PrintTable {
 
             printColumnAndRow(columns, rowCount);
         } catch (SQLException e) {
-            System.err.println("SQL exception in TablePrinter. Message:");
-            System.err.println(e.getMessage());
+            message.writeError("SQL exception in TablePrinter. Message:");
+            message.writeError(e.getMessage());
         }
     }
 
@@ -138,18 +144,18 @@ public class PrintTable {
         strToPrint.insert(0, rowSeparator);
         strToPrint.append(rowSeparator);
 
-        System.out.print(strToPrint.toString());
+        message.writePrint(strToPrint.toString());
 
         String format;
 
         for (int i = 0; i < rowCount; i++) {
             for (Column c : columns) {
                 format = String.format("| %%%s%ds ", c.getJustifyFlag(), c.getWidth());
-                System.out.print(String.format(format, c.getValue(i)));
+                message.writePrint(String.format(format, c.getValue(i)));
             }
-            System.out.println("|");
-            System.out.print(rowSeparator);
+            message.write("|");
+            message.writePrint(String.valueOf(rowSeparator));
         }
-        System.out.println();
+        message.writeEmpty();
     }
 }
