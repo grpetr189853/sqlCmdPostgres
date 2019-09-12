@@ -23,10 +23,9 @@ public class ListTables implements Command {
     @Override
     public void executeCommand(String command) {
         Set<String> tables = managerDAO.listTables();
-        if (tables.size() != 0) {
-            message.write(tables.toString());
-        } else {
+        if (tables.size() == 0) {
             message.write(DescriptionMessage.DATABASE_NOT_TABLES.getDescription());
         }
+        message.write(tables.toString());
     }
 }

@@ -20,7 +20,7 @@ public class OpenTable implements Command {
         String[] data = command.split("\\|");
         if (data.length != 2) {
             throw new IllegalArgumentException(
-                    String.format(DescriptionMessage.WRONG_OPEN_TABLE.getDescription() + command));
+                    String.format(DescriptionMessage.WRONG_OPEN_TABLE.getDescription(), command));
         }
 
         String tableName = data[1];
