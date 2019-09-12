@@ -36,7 +36,7 @@ public enum DescriptionMessage {
     DELETE_DATA("Record successfully deleted"),
     WRONG_DELETE_DATA("Command '%s' is wrong, should be: delete|tableName|columnName|columnValue"),
 
-    IS_CONNECTED("You cannot use ua.com.makarenko.commands. Connect to the database"),
+    IS_CONNECTED("You cannot use '%s' Connect to the database"),
 
     COMMAND_NOT_EXIST("Nonexistent command: '%s'"),
 

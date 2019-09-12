@@ -33,23 +33,26 @@ public class Controller {
     }
 
     public void run() {
-        message.write(DescriptionMessage.WELCOME_MESSAGE.getDescription());
+        try {
+            message.write(DescriptionMessage.WELCOME_MESSAGE.getDescription());
 
-        boolean contains = commands.contains(new Exit(message));
-        while (!contains) {
-            String input = message.read();
-            for (Command command : commands) {
-                try {
-                    if (command.beginCommand(input)) {
-                        command.executeCommand(input);
+            boolean contains = commands.contains(new Exit(message));
+            while (!contains) {
+                String input = message.read();
+                for (Command command : commands) {
+                    try {
+                        if (command.beginCommand(input)) {
+                            command.executeCommand(input);
+                            break;
+                        }
+                    } catch (RuntimeException e) {
+                        if(e instanceof Exit) throw e;
+                        message.write(DescriptionMessage.FAIL.getDescription() + e.getMessage());
                         break;
                     }
-                } catch (RuntimeException e) {
-                    message.write(DescriptionMessage.FAIL.getDescription() + e.getMessage());
-                    break;
                 }
+                message.write(DescriptionMessage.ENTER_COMMAND.getDescription());
             }
-            message.write(DescriptionMessage.ENTER_COMMAND.getDescription());
-        }
+        } catch (Exit e) {}
     }
 }

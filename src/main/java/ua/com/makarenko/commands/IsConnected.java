@@ -20,6 +20,6 @@ public class IsConnected implements Command {
 
     @Override
     public void executeCommand(String command) {
-        message.write(DescriptionMessage.IS_CONNECTED.getDescription());
+        message.write(String.format(DescriptionMessage.IS_CONNECTED.getDescription(), command));
     }
 }

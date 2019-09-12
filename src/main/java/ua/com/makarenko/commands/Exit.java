@@ -3,8 +3,12 @@ package ua.com.makarenko.commands;
 import ua.com.makarenko.view.DescriptionMessage;
 import ua.com.makarenko.view.Message;
 
-public class Exit implements Command {
+public class Exit extends RuntimeException implements Command {
+
     private Message message;
+
+    public Exit() {
+    }
 
     public Exit(Message message) {
         this.message = message;
@@ -17,7 +21,7 @@ public class Exit implements Command {
 
     @Override
     public void executeCommand(String command) {
-        message.write(DescriptionMessage.EXIT_PROGRAM.getDescription());
-        Runtime.getRuntime().exit(0);
+            message.write(DescriptionMessage.EXIT_PROGRAM.getDescription());
+            throw new Exit();
     }
 }
