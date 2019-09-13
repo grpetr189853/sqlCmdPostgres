@@ -24,10 +24,6 @@ public class Help implements Command {
 
     @Override
     public void executeCommand(String command) {
-        if (!command.equals("help")) {
-            throw new IllegalArgumentException(DescriptionMessage.COMMAND_NOT_EXIST.getDescription());
-        }
-
         try {
             List<String> readHelpFiles = Files.readAllLines(Paths.get(helpFile));
             Iterator<String> iterator = readHelpFiles.iterator();

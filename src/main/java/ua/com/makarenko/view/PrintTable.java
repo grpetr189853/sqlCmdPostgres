@@ -7,11 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrintTable {
-    private static Message message;
-
-    public static void setMessage(Message message) {
-        PrintTable.message = message;
-    }
+    private static Message message = new Console();
 
     private static class Column {
 
